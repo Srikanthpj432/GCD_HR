@@ -9,8 +9,9 @@ define view entity ZI_HR_BasicPay as select from pa0008 {
   trfgb as PayScaleArea,
   trfgr as PayScaleGroup,
   trfst as PayScaleLevel,
-  ancur as Currency,
+  ancur as AnnualCurrency,
   ansal as AnnualSalary,
+  waers as Currency,
   bet01 as WageAmount,
   lga01 as WageType
 }
