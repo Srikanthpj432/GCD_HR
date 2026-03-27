@@ -1,6 +1,6 @@
 @EndUserText.label: 'HR Employee Service'
 define service ZSD_HR_Employee {
-  expose ZC_HR_Employee    as Employee;
+  expose ZI_HR_Employee    as Employee;
   expose ZI_HR_Address       as Address;
   expose ZI_HR_PayrollStatus as PayrollStatus;
   expose ZI_HR_WorkingTime   as WorkingTime;
