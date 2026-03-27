@@ -6,7 +6,7 @@ define view entity ZI_HR_Address as select from pa0006 {
   key cast( endda as abap.dats ) as Endda,
   key cast( begda as abap.dats ) as Begda,
   seqnr as Seqnr,
-  anssa as AddressType,
+  anssa as AddrType,
   stras as Street,
   ort01 as City,
   pstlz as PostalCode,
