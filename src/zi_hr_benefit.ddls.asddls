@@ -6,5 +6,7 @@ define view entity ZI_HR_Benefit as select from pa0171 {
   key endda as Endda,
   key begda as Begda,
   seqnr as Seqnr,
-  bplan as BenefitPlanId
+  barea as BenefitArea,
+  bengr as BenefitGroup,
+  bstat as BenefitStatus
 }
