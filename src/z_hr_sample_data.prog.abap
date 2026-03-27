@@ -23,7 +23,7 @@ DATA: BEGIN OF gs_cfg,
         persk  TYPE persk,        "T503: Employee subgroup
         kostl  TYPE kostl,        "CSKS: Cost center
         abkrs  TYPE abkrs,        "T549A: Payroll area
-        schkz  TYPE schkz,        "T508A: Work schedule rule
+        schkz  TYPE pa0007-schkz,  "T508A: Work schedule rule
         trfar  TYPE trfar,        "T510: Pay scale type
         trfgb  TYPE trfgb,        "T510: Pay scale area
         trfgr  TYPE trfgr,        "T510: Pay scale group
@@ -34,7 +34,7 @@ DATA: BEGIN OF gs_cfg,
         bankl  TYPE bankk,        "BNKA: Bank key
         banks  TYPE banks,        "BNKA: Bank country
         awart  TYPE awart,        "T554S: Absence type
-        anession TYPE anession,   "T554S: Attendance type
+        atart  TYPE awart,        "T554S: Attendance type
         ktart  TYPE ktart,        "T556B: Quota type
       END OF gs_cfg.
 
@@ -130,7 +130,7 @@ FORM read_config.
   SELECT SINGLE awart FROM t554s INTO gs_cfg-awart.
 
 * T554S: Attendance Type (subtype for PA2002)
-  SELECT SINGLE awart FROM t554s INTO gs_cfg-anession
+  SELECT SINGLE awart FROM t554s INTO gs_cfg-atart
     WHERE awart <> gs_cfg-awart.
 
 * T556B: Absence Quota Type
@@ -160,7 +160,7 @@ FORM print_config.
   WRITE: / 'BNKA    Bank Key:', gs_cfg-bankl,
            ' Country:', gs_cfg-banks.
   WRITE: / 'T554S   Absence Type:', gs_cfg-awart,
-           ' Attend:', gs_cfg-anession.
+           ' Attend:', gs_cfg-atart.
   WRITE: / 'T556B   Quota Type:', gs_cfg-ktart.
   WRITE: / ''.
 ENDFORM.
@@ -321,7 +321,7 @@ FORM insert_all USING iv_pernr TYPE persno
   ls_pa0009-bankn  = '1234567890'.
   ls_pa0009-bkont  = '01'.
   ls_pa0009-zlsch  = 'T'.
-  ls_pa0009-waession = gs_cfg-waers.   "From T001
+  ls_pa0009-waers = gs_cfg-waers.   "From T001
   MODIFY pa0009 FROM ls_pa0009.
   WRITE: / 'PA0009 (Bank Details):', sy-subrc.
 
@@ -334,7 +334,7 @@ FORM insert_all USING iv_pernr TYPE persno
   ls_pa0014-begda  = iv_begda.
   ls_pa0014-seqnr  = '000'.
   ls_pa0014-betrg  = '20000'.
-  ls_pa0014-waession = gs_cfg-waers.   "From T001
+  ls_pa0014-waers = gs_cfg-waers.   "From T001
   MODIFY pa0014 FROM ls_pa0014.
   WRITE: / 'PA0014 (Recurring Pay):', sy-subrc.
 
@@ -347,7 +347,7 @@ FORM insert_all USING iv_pernr TYPE persno
   ls_pa0015-begda  = '20250301'.
   ls_pa0015-seqnr  = '000'.
   ls_pa0015-betrg  = '50000'.
-  ls_pa0015-waession = gs_cfg-waers.   "From T001
+  ls_pa0015-waers = gs_cfg-waers.   "From T001
   MODIFY pa0015 FROM ls_pa0015.
   WRITE: / 'PA0015 (Additional Pay):', sy-subrc.
 
@@ -447,7 +447,7 @@ FORM insert_all USING iv_pernr TYPE persno
   CLEAR ls_pa2002.
   ls_pa2002-mandt  = sy-mandt.
   ls_pa2002-pernr  = iv_pernr.
-  ls_pa2002-subty  = gs_cfg-anession.  "From T554S (2nd type)
+  ls_pa2002-subty  = gs_cfg-atart.  "From T554S (2nd type)
   ls_pa2002-endda  = '20250120'.
   ls_pa2002-begda  = '20250120'.
   ls_pa2002-seqnr  = '000'.
