@@ -30,9 +30,9 @@ define view entity ZI_HR_Employee
 
 {
       -- Key fields
-  key cast( pa0001.pernr as abap.numc(8) ) as Pernr,
-  key cast( pa0001.endda as abap.dats ) as Endda,
-  key cast( pa0001.begda as abap.dats ) as Begda,
+  key pa0001.pernr as Pernr,
+  key pa0001.endda as Endda,
+  key pa0001.begda as Begda,
 
       -- Actions (PA0000)
       pa0000.stat2 as EmploymentStatus,
@@ -55,7 +55,7 @@ define view entity ZI_HR_Employee
       pa0002.nachn as LastName,
       pa0002.vorna as FirstName,
       pa0002.rufnm as KnownAs,
-      cast( pa0002.gbdat as abap.dats ) as DateOfBirth,
+      pa0002.gbdat as DateOfBirth,
       pa0002.gesch as Gender,
       pa0002.natio as Nationality,
       pa0002.gbort as BirthPlace,

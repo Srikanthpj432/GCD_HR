@@ -1,0 +1,22 @@
+@EndUserText.label: 'HR Employee Service'
+define service ZSD_HR_EMPLOYEE_V4 {
+  expose ZI_HR_Employee as Employee;
+  expose ZI_HR_Address as Address;
+  expose ZI_HR_PayrollStatus as PayrollStatus;
+  expose ZI_HR_WorkingTime as WorkingTime;
+  expose ZI_HR_BasicPay as BasicPay;
+  expose ZI_HR_BankDetail as BankDetail;
+  expose ZI_HR_RecurringPay as RecurringPay;
+  expose ZI_HR_AdditionalPay as AdditionalPay;
+  expose ZI_HR_Family as Family;
+  expose ZI_HR_InternalCtrl as InternalControl;
+  expose ZI_HR_Communication as Communication;
+  expose ZI_HR_HealthPlan as HealthPlan;
+  expose ZI_HR_Benefit as Benefit;
+  expose ZI_HR_Absence as Absence;
+  expose ZI_HR_Attendance as Attendance;
+  expose ZI_HR_LeaveQuota as LeaveQuota;
+  expose ZI_HR_OrgUnit as OrgUnit;
+  expose ZI_HR_Position as Position;
+  expose ZI_HR_Job as Job;
+}
