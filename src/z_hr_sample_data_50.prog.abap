@@ -557,15 +557,17 @@ FORM delete_all.
   ENDDO.
 
   " Delete OM objects for 5 departments
-  DATA: lv_oid TYPE hrobjid, lv_di2 TYPE i.
+  DATA: lv_oid TYPE hrobjid, lv_sid TYPE hrobjid, lv_cid TYPE hrobjid, lv_di2 TYPE i.
   DO 5 TIMES.
     lv_di2 = sy-index.
     lv_oid = 50000000 + ( ( lv_di2 - 1 ) * 10 ).
+    lv_sid = lv_oid + 1.
+    lv_cid = lv_oid + 2.
     DELETE FROM hrp1000 WHERE otype = 'O' AND objid = lv_oid.
-    DELETE FROM hrp1000 WHERE otype = 'S' AND objid = lv_oid + 1.
-    DELETE FROM hrp1000 WHERE otype = 'C' AND objid = lv_oid + 2.
+    DELETE FROM hrp1000 WHERE otype = 'S' AND objid = lv_sid.
+    DELETE FROM hrp1000 WHERE otype = 'C' AND objid = lv_cid.
     DELETE FROM hrp1001 WHERE otype = 'O' AND objid = lv_oid.
-    DELETE FROM hrp1001 WHERE otype = 'S' AND objid = lv_oid + 1.
+    DELETE FROM hrp1001 WHERE otype = 'S' AND objid = lv_sid.
   ENDDO.
 
   COMMIT WORK AND WAIT.
