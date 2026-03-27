@@ -359,7 +359,7 @@ FORM insert_all USING iv_pernr TYPE persno
   ls_pa0021-endda  = iv_endda.
   ls_pa0021-begda  = iv_begda.
   ls_pa0021-seqnr  = '000'.
-  ls_pa0021-famna  = 'Kumar'.
+  ls_pa0021-fanam  = 'Kumar'.
   ls_pa0021-fgbdt  = '19920520'.
   ls_pa0021-favor  = 'Priya'.
   MODIFY pa0021 FROM ls_pa0021.
